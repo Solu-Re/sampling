@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">Community Events</div>
+                <div class="nav-links">
+                    <a href="#events" class="nav-link active">Events</a>
+                    <a href="#calendar" class="nav-link">Calendar</a>
+                    <a href="#reminders" class="nav-link">Reminders</a>
+                </div>
+                <div id="userInfo" class="user-info"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Local Community Events</h1>
+                <p>Discover and join exciting events happening in your community</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search events...">
+            </div>
+            <div class="filter-container">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="music">Music</option>
+                    <option value="art">Art</option>
+                    <option value="food">Food</option>
+                    <option value="sports">Sports</option>
+                    <option value="workshop">Workshop</option>
+                </select>
+                <select id="locationFilter">
+                    <option value="all">All Locations</option>
+                    <option value="downtown">Downtown</option>
+                    <option value="park">City Park</option>
+                    <option value="library">Community Library</option>
+                    <option value="hall">Town Hall</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                <div id="loadingSpinner" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading events...</p>
+                </div>
+
+                <section id="eventsContainer" class="events-container">
+                    <!-- Events will be dynamically added here -->
+                </section>
+            </div>
+
+            <aside class="sidebar">
+                <div id="calendarContainer" class="calendar-container">
+                    <!-- Calendar will be dynamically added here -->
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Register for <span id="modalEventName"></span></h2>
+            <form id="registrationForm">
+                <input type="hidden" id="eventId">
+                <div class="form-group">
+                    <input type="hidden" id="userInfo" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register Now</button>
+            </form>
+            <div id="formSuccess" class="success-message hidden">
+                <p>Registration successful! You'll receive a confirmation email shortly.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Local Community Event Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
