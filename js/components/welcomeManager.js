@@ -1,4 +1,5 @@
 import { CookieManager } from '../utils/cookieManager.js';
+import Swal from 'sweetalert2';
 
 /**
  * Manages user welcome experience
@@ -9,12 +10,22 @@ export class WelcomeManager {
     }
 
     /**
-     * Set user's name
+     * Set user's name and show welcome alert
      */
-    setUserName(name) {
+    async setUserName(name) {
         this.userName = name;
         CookieManager.setCookie('userName', name);
         this.updateUserInfo();
+        
+        // Show welcome alert
+        await Swal.fire({
+            title: `Hi ${name}! 👋`,
+            text: 'Welcome to Community Events!',
+            icon: 'success',
+            confirmButtonColor: '#3563E9',
+            timer: 3000,
+            timerProgressBar: true
+        });
     }
 
     /**
