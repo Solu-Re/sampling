@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calendar - Community Events</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">Community Events</div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Events</a>
+                    <a href="calendar.html" class="nav-link active">Calendar</a>
+                    <a href="#reminders" class="nav-link">Reminders</a>
+                </div>
+                <div id="userInfo" class="user-info"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="calendar-page">
+            <h1>My Event Calendar</h1>
+            <div id="registeredEvents" class="registered-events">
+                <!-- Registered events will be displayed here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Local Community Event Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/calendar.js"></script>
+</body>
+</html>
