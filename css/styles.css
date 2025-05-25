@@ -1,89 +1,285 @@
-/* Add to existing styles.css */
+:root {
+  /* Color System */
+  --color-primary: #3563E9;
+  --color-primary-light: #5A80F0;
+  --color-primary-dark: #1F4CC9;
+  --color-secondary: #6D7D93;
+  --color-accent: #FF6433;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-background: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-text: #1A202C;
+  --color-text-light: #4A5568;
+  --color-text-lighter: #718096;
+  --color-border: #E2E8F0;
+
+  /* Category Colors */
+  --color-music: #8B5CF6;
+  --color-art: #EC4899;
+  --color-food: #F59E0B;
+  --color-sports: #10B981;
+  --color-workshop: #3B82F6;
+
+  /* Spacing System (8px base) */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-md: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 2rem;     /* 32px */
+  --font-size-4xl: 2.5rem;   /* 40px */
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.05);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+/* Welcome Screen Styles */
 .welcome-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .welcome-container {
-    background-color: var(--color-surface);
-    padding: var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
+  background-color: var(--color-surface);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.welcome-container h1 {
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.welcome-container p {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-lg);
 }
 
 .welcome-form {
-    margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .welcome-form input {
-    width: 100%;
-    padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-md);
+  width: 100%;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-fast);
 }
 
-.hidden {
-    display: none !important;
+.welcome-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(53, 99, 233, 0.2);
 }
 
+.welcome-form button {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.welcome-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(53, 99, 233, 0.3);
+}
+
+/* Calendar Page Styles */
 .calendar-page {
-    padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) 0;
+  min-height: calc(100vh - 200px);
 }
 
 .calendar-page h1 {
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  position: relative;
+}
+
+.calendar-page h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  margin: var(--spacing-sm) auto 0;
+  border-radius: var(--radius-sm);
 }
 
 .registered-events {
-    display: grid;
-    gap: var(--spacing-md);
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  padding: var(--spacing-md);
 }
 
 .registered-event-card {
-    background-color: var(--color-surface);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-md);
-    box-shadow: var(--shadow-md);
-    transition: transform var(--transition-normal);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--color-border);
 }
 
 .registered-event-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .registered-event-date {
-    color: var(--color-primary);
-    font-weight: 500;
-    margin-bottom: var(--spacing-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
 }
 
 .registered-event-title {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.3;
 }
 
 .registered-event-location {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
 .no-events-message {
-    text-align: center;
-    padding: var(--spacing-xl);
-    color: var(--color-text-light);
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.no-events-message h2 {
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-2xl);
+}
+
+.no-events-message p {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.no-events-message .btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.no-events-message .btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .welcome-container {
+    padding: var(--spacing-lg);
+  }
+
+  .calendar-page h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .registered-events {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
 }
